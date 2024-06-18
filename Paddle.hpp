@@ -31,9 +31,9 @@ class Paddle{
     inline void moveDown(){
         y--;
     }
-    friend ostream & operator<<(ostream &ofs,Paddle p);
+    friend ostream & operator<<(ostream &o,const Paddle &c);
 };
-ostream & operator<<(ostream &ofs,Paddle p){
+ostream & operator<<(ostream& o,const Paddle& c){
     o << "Paddle ["<< c.x <<","<<c.y<<"]";
     return o;
 }
