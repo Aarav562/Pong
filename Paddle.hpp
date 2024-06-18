@@ -26,10 +26,10 @@ class Paddle{
         return y;
     }
     inline void moveUp(){
-        y++;
+        y--;
     }
     inline void moveDown(){
-        y--;
+        y++;
     }
     friend ostream & operator<<(ostream &o,const Paddle &c);
 };

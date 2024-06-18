@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    gameManager c(40,20);
-    c.run();
+    gameManager c1(40,20);
+    c1.draw();
     return 0;
 }

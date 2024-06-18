@@ -29,7 +29,9 @@ class gameManager{
         player2 = new Paddle(w-2,h/2-3);
     }
     ~gameManager(){
-        delete ball,player1,player2;
+        delete ball;
+        delete player1;
+        delete player2;
     }
     void scoreUP(Paddle *player){
         if(player==player1)
@@ -58,24 +60,11 @@ class gameManager{
 
                 if(j==0)
                     cout<<"\xB2";
-                
                 if(ballx==j && bally==i)
                     cout<<"O";
                 else if(player1x==j && player1y == i)
                     cout<<"\xDB";
                 else if(player2x == j && player2y == i)
-                    cout<<"\xDB";
-                else if(player1x == j && player1y +1 ==i)
-                    cout<<"\xDB";
-                else if(player1x == j && player1y +2 ==i)
-                    cout<<"\xDB";
-                else if(player1x == j && player1y +3 ==i)
-                    cout<<"\xDB";
-                else if(player2x==j && player2y+ 1 ==i)
-                    cout<<"\xDB";
-                else if(player2x==j && player2y+ 2 ==i)
-                    cout<<"\xDB";
-                else if(player2x==j && player2y+ 3 ==i)
                     cout<<"\xDB";
                 else
                     cout<<" ";
@@ -83,11 +72,11 @@ class gameManager{
                 if(j==width-1){
                     cout<<"\xB2";
                 }
-                cout<<endl;
             }
+            cout<<endl;
         }
         for(int i=0;i<width+2;i++){
-            cout<<"\xB2";
+            cout<<"#";
         }
         cout<<endl;
 
@@ -95,28 +84,22 @@ class gameManager{
     }
     void input(){
         ball->Move();
-        int ballx = ball->getX();
-        int bally = ball->getY();
-        int player1x = player1->getX();
-        int player1y = player1->getY();
-        int player2x = player2->getX();
-        int player2y = player2->getY();
 
         if(_kbhit()){
             char current = _getch();
-            if(current == up1 && player1y>0){
+            if(current == up1 && player1->getY()>0){
                 player1->moveUp();
             }
-            else if(current == down1 && player1y + 4 < height){
+            else if(current == down1 && player1->getY() + 4 < height){
                 player1->moveDown();
             }
-            else if(current == up2 && player2y>0){
+            else if(current == up2 && player2->getY()>0){
                 player2->moveUp();
             }
-            else if(current==down2 && player2y + 4 < height){
+            else if(current==down2 && player2->getY() + 4 < height){
                 player2->moveDown();
             }
-            else if(current = 'q'){
+            else if(current == 'q'){
                 quit = true;
             }
         }
@@ -143,12 +126,10 @@ class gameManager{
         if(bally == 0)
             ball->changeDirection(ball->getDirection() == UPRIGHT ? DOWNRIGHT : DOWNLEFT);
 
-        if(ballx == width-1){
+        if(ballx == width -1)
             scoreUP(player1);
-        }
-        if(ballx == 0){
-            scoreUp(player2);
-        }
+        if(ballx==0)
+            scoreUP(player2);
     }
 
     void run(){

@@ -64,7 +64,7 @@ public:
             break;
         }
     }
-    friend ostream& operator <<(ostream & o, Ball b);
+    friend ostream& operator <<(ostream & o, Ball c);
 };
 
 ostream& operator<<(ostream& o, Ball c)
