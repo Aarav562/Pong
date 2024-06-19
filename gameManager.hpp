@@ -3,6 +3,7 @@
 #include<time.h>
 #include"Ball.hpp"
 #include"Paddle.hpp"
+#include<windows.h>
 using namespace std;
 class gameManager{
     private:
@@ -76,7 +77,7 @@ class gameManager{
             cout<<endl;
         }
         for(int i=0;i<width+2;i++){
-            cout<<"#";
+            cout<<"\xB2";
         }
         cout<<endl;
 
@@ -137,6 +138,7 @@ class gameManager{
             draw();
             input();
             game();
+            Sleep(100);
         }
     }
 

@@ -4,6 +4,6 @@ using namespace std;
 
 int main() {
     gameManager c1(40,20);
-    c1.draw();
+    c1.run();
     return 0;
 }
